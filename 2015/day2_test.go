@@ -9,3 +9,12 @@ func TestCalculatePresent(t *testing.T) {
 		t.Errorf("Expected 43, got %d", got)
 	}
 }
+
+
+func TestCalculateRibbon(t *testing.T) {
+	present := []int{1,1,10}
+	got := calculateRibbon(present)
+	if got != 14 {
+		t.Errorf("Expected 14, got %d", got)
+	}
+}

@@ -55,10 +55,29 @@ func calculatePresent(dimensions []int) int {
 	return 2*l*w + 2*w*h + 2*h*l + smallest*second
 }
 
+func calculateRibbon(dimensions []int) int {
+	l := dimensions[0]
+	w := dimensions[1]
+	h := dimensions[2]
+
+	smallest := min(l, w, h)
+	highest := max(l, w, h)
+	second := l + w + h - smallest - highest
+	return 2*smallest + 2*second + l*w*h
+}
+
 func calculateAllPresents(dimensions [][]int) int {
 	total := 0
 	for _, dimension := range dimensions {
 		total += calculatePresent(dimension)
+	}
+	return total
+}
+
+func calculateAllRibbons(dimensions [][]int) int {
+	total := 0
+	for _, dimension := range dimensions {
+		total += calculateRibbon(dimension)
 	}
 	return total
 }
@@ -71,5 +90,7 @@ func day2() {
 	fmt.Println(intArrays[0])
 	fmt.Println(intArrays[len(intArrays)-1])
 	fmt.Println(calculateAllPresents(intArrays))
+	fmt.Println(calculateAllRibbons(intArrays))
+
 
 }
