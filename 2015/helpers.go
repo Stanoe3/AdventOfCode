@@ -6,7 +6,8 @@ import (
 	"log"
 	"os"
 )
-
+// ReadFile will read the full file and return the data as 1 string
+// There is a limit at 102400 bytes but this can be altered if needed
 func ReadFile(path string) string {
 	f, err := os.Open(path)
 	if err != nil {

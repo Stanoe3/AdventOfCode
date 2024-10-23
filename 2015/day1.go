@@ -2,30 +2,45 @@ package main
 
 import (
 	"fmt"
-	"unicode/utf8"
 )
 
 func findFloor(data string) int {
-	up := 0
-	down := 0
-	fmt.Println(utf8.RuneCountInString(data))
+	floor := 0
 	for _, v := range data {
 		if v == 0 {
 			continue
 		}
 		if v == '(' {
-			up++
+			floor++
 		} else if v == ')' {
-			down++
+			floor--
 		}
 	}
-	fmt.Println(up)
-	fmt.Println(down)
-	return up - down
+	return floor
+}
+
+func findBasementEntry(data string) int {
+	floor := 0
+	for index, v := range data {
+		if v == 0 {
+			continue
+		}
+		if v == '(' {
+			floor++
+		} else if v == ')' {
+			floor--
+		}
+		if floor == -1 {
+			return index+1
+		}
+	}
+	return 0
 }
 
 func main() {
 	data := ReadFile("./inputs/day1.txt")
 	floorFound := findFloor(data)
-	fmt.Println(floorFound)
+	basementFound := findBasementEntry(data)
+	fmt.Printf("Final floor found: %d\n", floorFound)
+	fmt.Printf("Basement entered at : %d\n", basementFound)
 }
