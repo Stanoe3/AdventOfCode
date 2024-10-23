@@ -5,7 +5,9 @@ import (
 	"io"
 	"log"
 	"os"
+	"strings"
 )
+
 // ReadFile will read the full file and return the data as 1 string
 // There is a limit at 102400 bytes but this can be altered if needed
 func ReadFile(path string) string {
@@ -29,4 +31,8 @@ func ReadFile(path string) string {
 		}
 	}
 	return ""
+}
+
+func splitDataByLine(data string) []string {
+	return strings.Split(data, "\n")
 }

@@ -37,7 +37,7 @@ func findBasementEntry(data string) int {
 	return 0
 }
 
-func main() {
+func day1() {
 	data := ReadFile("./inputs/day1.txt")
 	floorFound := findFloor(data)
 	basementFound := findBasementEntry(data)
