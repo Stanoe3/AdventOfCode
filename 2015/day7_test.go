@@ -8,7 +8,8 @@ import (
 func TestExecuteOnceInstructions(t *testing.T) {
 	testInstructions := [][]string{{"a", "AND", "b", "c"}, {"b", "NOT", "", "a"}, {"10", "NOT", "", "b"}}
 	wireMap := map[string]uint16{}
-	gotMap, gotInstr := executeOnceInstructions(testInstructions, wireMap)
+	part2 := false
+	gotMap, gotInstr := executeOnceInstructions(testInstructions, wireMap, part2)
 	fmt.Println(gotMap)
 	fmt.Println(gotInstr)
 	if len(gotInstr) != 2 {
